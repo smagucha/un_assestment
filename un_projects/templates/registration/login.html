@@ -1,0 +1,83 @@
+{% extends "un_portal/base.html" %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<style>
+    .login-container {
+        min-height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .login-card {
+        width: 100%;
+        max-width: 400px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .login-card h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #003366;
+    }
+
+    .login-card form p {
+        margin-bottom: 15px;
+    }
+
+    .login-card label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .login-card input[type="text"],
+    .login-card input[type="password"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    .login-card input:focus {
+        border-color: #003366;
+        outline: none;
+    }
+
+    .login-card button {
+        width: 100%;
+        margin-top: 20px;
+        padding: 10px;
+        background-color: #003366;
+        color: #ffffff;
+        border: none;
+        border-radius: 5px;
+        font-size: 15px;
+        font-weight: bold;
+        cursor: pointer;
+    }
+
+    .login-card button:hover {
+        background-color: #002244;
+    }
+</style>
+
+<div class="login-container">
+    <div class="login-card">
+        <h2>Login</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Login</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

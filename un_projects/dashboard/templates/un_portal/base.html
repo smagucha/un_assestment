@@ -1,0 +1,53 @@
+<html>
+    <style>
+    .top-bar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 12px 20px;
+        background-color: #003366;
+        color: white;
+    }
+
+    .top-bar h2 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: normal;
+    }
+
+    .logout-form button {
+        background-color: #ffffff;
+        color: #003366;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .logout-form button:hover {
+        background-color: #e6e6e6;
+    }
+</style>
+
+<div class="top-bar">
+    <h2>UN Portal</h2>
+
+    {% if user.is_authenticated %}
+    <form method="post" action="{% url 'logout' %}" class="logout-form">
+        {% csrf_token %}
+        <button type="submit">Logout</button>
+    </form>
+    {% endif %}
+</div>
+
+<hr>
+
+    <head><title></title></head>
+    <body>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

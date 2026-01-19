@@ -1,0 +1,106 @@
+{% extends "un_portal/base.html" %}
+
+{% block title %}Add Staff{% endblock %}
+
+{% block content %}
+<style>
+    .form-container {
+        min-height: 70vh;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        padding-top: 30px;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 600px;
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+
+    .form-card h2 {
+        margin-bottom: 25px;
+        color: #003366;
+        text-align: center;
+    }
+
+    .form-card form p {
+        margin-bottom: 15px;
+    }
+
+    .form-card label {
+        display: block;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .form-card input,
+    .form-card select,
+    .form-card textarea {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .form-card input:focus,
+    .form-card select:focus,
+    .form-card textarea:focus {
+        border-color: #003366;
+        outline: none;
+    }
+
+    .form-actions {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 25px;
+    }
+
+    .save-btn {
+        background-color: #003366;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    .save-btn:hover {
+        background-color: #002244;
+    }
+
+    .cancel-btn {
+        text-decoration: none;
+        color: #555;
+        font-size: 14px;
+    }
+
+    .cancel-btn:hover {
+        text-decoration: underline;
+    }
+</style>
+
+<div class="form-container">
+    <div class="form-card">
+        <h2>Add Staff</h2>
+
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+
+            <div class="form-actions">
+                <a href="{% url 'dashboard:home' %}" class="cancel-btn">Cancel</a>
+                <button type="submit" class="save-btn">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,121 @@
+{% extends "un_portal/base.html" %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %} 
+ <style>
+    .page-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .page-header h1 {
+        margin: 0;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .add-btn {
+        background-color: #003366;
+        color: #ffffff;
+        padding: 10px 16px;
+        border-radius: 6px;
+        text-decoration: none;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .add-btn:hover {
+        background-color: #002244;
+    }
+    h1 {
+        margin-bottom: 20px;
+        font-size: 24px;
+        color: #333;
+    }
+
+    .table-container {
+        overflow-x: auto;
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 14px;
+    }
+
+    th {
+        background-color: #003366;
+        color: #ffffff;
+        padding: 10px;
+        text-align: left;
+        white-space: nowrap;
+    }
+
+    td {
+        padding: 10px;
+        border-bottom: 1px solid #e0e0e0;
+        white-space: nowrap;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f5f7fa;
+    }
+
+    tr:hover {
+        background-color: #e9f2ff;
+    }
+
+    th:first-child,
+    td:first-child {
+        text-align: center;
+        font-weight: bold;
+    }
+</style>
+
+<h1>All Employees</h1>
+
+<div class="table-container">
+    <table>
+        <tr>
+            <th>No</th>
+            <th>Index Number</th>
+            <th>Full Name</th>
+            <th>Email</th>
+            <th>Current Location</th>
+            <th>Highest Level of Education</th>
+            <th>Remote Work</th>
+            <th>Software Expertise</th>
+            <th>Expertise Level</th>
+            <th>Language</th>
+            <th>Level of Responsibility</th>
+        </tr>
+
+        {% for staff in employees %}
+        <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ staff.INdexNumber }}</td>
+            <td>{{ staff.FullNames }}</td>
+            <td>{{ staff.email }}</td>
+            <td>{{ staff.CurrentLocation }}</td>
+            <td>{{ staff.HighestLevelofEducation }}</td>
+            <td>{{ staff.AvailabiltiyForRemotework }}</td>
+            <td>{{ staff.Software_Expertise }}</td>
+            <td>{{ staff.Software_Expertise_Level }}</td>
+            <td>{{ staff.Language }}</td>
+            <td>{{ staff.Level_Of_responsibility }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+<div class="page-header">
+    <h1>All Employees</h1>
+    <a href="{% url 'dashboard:addemployee' %}" class="add-btn">+ Add Staff</a>
+</div>
+{% endblock content %}
